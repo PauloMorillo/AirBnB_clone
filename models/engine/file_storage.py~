@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+"""module with filestorage class"""
+import json
+
+class FileStorage:
+    """Class to serializes instances to a JSON and desearialize"""
+
+    def __init__(self):
+        self.__file_path = "file.json"
+        self.__objects = dict()
+
+    def all(self):
+        return self.__objects
+
+    def new(self, obj):
+        key = self.__class__.__name__ + self.id
+        self.__objects[key] = self.__dict__
+
+    def save(self):
+        with open(self.__file_path, w) as fl:
+            fl.
