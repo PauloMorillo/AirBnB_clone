@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """module with filestorage class"""
+from models.base_model import BaseModel
 import json
 
 
@@ -21,17 +22,23 @@ class FileStorage:
 
     def save(self):
         """Serializes objects private attribute to a JSON file"""
-        for key in self.__objects:
-            self.__objects[key] = self.__objects[key].to_dict()
+        tmp = {}
+        for obj in self.__objects:
+            tmp.update({obj: self.__objects[obj].to_dict()})
+
 
         with open(self.__file_path, "w") as f:
-            f.write(json.dumps(self.__objects))
+            f.write(json.dumps(tmp))
 
     def reload(self):
         """Deserializes the JSON file to objects private attribute"""
         try:
             with open(self.__file_path, "r") as f:
-                self.__objects = json.loads(f.read())
-                print(self.__objects)
-        except:
+                self.__objects = json.load(f)
+
+            for key, value in self.__objects.items():
+                base = eval(value["__class__"])
+
+                self.__objects[key] = base(**value)
+        except Exception as e:
             pass

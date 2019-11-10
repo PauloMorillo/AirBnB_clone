@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """This module has the main class called basemodel"""
-import uuid
 from datetime import datetime
-from models import storage
+import models
+import uuid
 
 
 class BaseModel:
@@ -17,17 +17,21 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """Method to print class, id, and json"""
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
+    def __repr__(self):
+        """Method to print class, id, and json"""
+        return self.__str__()
+
     def save(self):
         """Function to save the new update"""
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """Returns a dictionary with all keys and values of the instance"""
