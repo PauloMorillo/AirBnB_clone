@@ -2,6 +2,7 @@
 """module with filestorage class"""
 import json
 
+
 class FileStorage:
     """Class to serializes instances to a JSON and desearialize"""
 
@@ -16,14 +17,21 @@ class FileStorage:
 
     def new(self, obj):
         """assign objects private attribute"""
-        key = self.__class__.__name__ + self.id
-        self.__objects[key] = self.__dict__
+        self.__objects[obj.__class__.__name__ + "." + obj.id] = obj
 
     def save(self):
         """Serializes objects private attribute to a JSON file"""
+        for key in self.__objects:
+            self.__objects[key] = self.__objects[key].to_dict()
+
         with open(self.__file_path, "w") as f:
             f.write(json.dumps(self.__objects))
 
     def reload(self):
         """Deserializes the JSON file to objects private attribute"""
-        
+        try:
+            with open(self.__file_path, "r") as f:
+                self.__objects = json.loads(f.read())
+                print(self.__objects)
+        except:
+            pass
