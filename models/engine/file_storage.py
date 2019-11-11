@@ -1,6 +1,12 @@
 #!/usr/bin/python3
 """module with filestorage class"""
 from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.review import Review
+from models.state import State
+from models.place import Place
+from models.city import City
+from models.user import User
 import json
 
 
@@ -25,7 +31,6 @@ class FileStorage:
         tmp = {}
         for obj in self.__objects:
             tmp.update({obj: self.__objects[obj].to_dict()})
-
 
         with open(self.__file_path, "w") as f:
             f.write(json.dumps(tmp))
