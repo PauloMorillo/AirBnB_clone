@@ -151,9 +151,8 @@ class HBNBCommand(cmd.Cmd):
                 value = args[3].strip('"')
                 value = value.strip("'")
 
-                objects[inst_id].updated_at = datetime.now()
                 setattr(objects[inst_id], args[2], value)
-                models.storage.save()
+                objects[inst_id].save()
 
 
 if __name__ == '__main__':
