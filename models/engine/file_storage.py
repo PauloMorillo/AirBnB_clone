@@ -8,15 +8,13 @@ from models.place import Place
 from models.city import City
 from models.user import User
 import json
+import os
 
 
 class FileStorage:
     """Class to serializes instances to a JSON and desearialize"""
-
-    def __init__(self):
-        """all begins here"""
-        self.__file_path = "file.json"
-        self.__objects = dict()
+    __file_path = "file.json"
+    __objects = dict()
 
     def all(self):
         """return the dictionary onbjects"""
@@ -37,13 +35,12 @@ class FileStorage:
 
     def reload(self):
         """Deserializes the JSON file to objects private attribute"""
-        try:
-            with open(self.__file_path, "r") as f:
+
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path) as f:
                 self.__objects = json.load(f)
 
             for key, value in self.__objects.items():
                 base = eval(value["__class__"])
 
                 self.__objects[key] = base(**value)
-        except Exception as e:
-            pass
