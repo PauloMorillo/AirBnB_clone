@@ -1,5 +1,5 @@
 <p>
-<img width="260" height="90" src="https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUXW7JF5MT%2F20191111%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191111T135314Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=acb205f1feca6bb9012249657e25b7657128902ed169c025cd277b5046e7fd1f" align="right" >
+<img width="260" height="90" src="https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUXW7JF5MT%2F20191111%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191111T223735Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=362946d518481bf449fd72f50f681272882ab7a419ff1dca01f0729650faad74" align="right">
 </p>
 # Airbnb clone
 
@@ -114,7 +114,7 @@ Destroy an object
 ```
 
 ## Authors
-[Daniel Rodriguez] (https://github.com/dr2d4)
+[Daniel Rodriguez](https://github.com/dr2d4)
 [Paulo Morillo](https://github.com/PauloMorillo)
 
 ## License
