@@ -151,8 +151,9 @@ class HBNBCommand(cmd.Cmd):
                 value = args[3].strip('"')
                 value = value.strip("'")
 
-                setattr(objects[inst_id], args[2], value)
-                objects[inst_id].save()
+                if args[2] not in ["created_at", "updated_at"]:
+                    setattr(objects[inst_id], args[2], value)
+                    objects[inst_id].save()
 
 
 if __name__ == '__main__':
