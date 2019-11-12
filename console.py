@@ -125,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
             if args:
                 eval(args)
         except Exception as e:
-            print("** class doesn't exist **", e)
+            print("** class doesn't exist **")
             return
 
         print(list(objects.values()))
