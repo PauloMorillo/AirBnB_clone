@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-	This module has the main class called basemodel
+    This module has the main class called basemodel
 """
 from datetime import datetime
 import models
@@ -9,6 +9,7 @@ import uuid
 
 class BaseModel:
     """BaseModell class"""
+
     def __init__(self, *args, **kwargs):
         """Here begins the class"""
         if kwargs:
