@@ -7,6 +7,7 @@ from models.amenity import Amenity
 from models.review import Review
 from models.state import State
 from models.place import Place
+from datetime import datetime
 from models.city import City
 from models.user import User
 import models
@@ -136,6 +137,7 @@ class HBNBCommand(cmd.Cmd):
         :return:
         """
         objects, inst_id = get_objects_by_class(args)
+        args = args.split()
 
         if objects and inst_id:
             if len(args) == 2:
@@ -146,11 +148,10 @@ class HBNBCommand(cmd.Cmd):
                 return
 
             if objects and inst_id:
-                args = args.split()
-
                 value = args[3].strip('"')
                 value = value.strip("'")
 
+                objects[inst_id].updated_at = datetime.now()
                 setattr(objects[inst_id], args[2], value)
                 models.storage.save()
 
