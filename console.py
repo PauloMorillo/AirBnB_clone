@@ -93,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
         """
         objects, inst_id = get_objects_by_class(args)
 
-        if objects and inst_id:
+        if inst_id:
             try:
                 print(objects[inst_id])
             except KeyError:
@@ -106,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
         """
         objects, inst_id = get_objects_by_class(args)
 
-        if objects and inst_id:
+        if inst_id:
             try:
                 objects.pop(inst_id)
                 storage.save()
