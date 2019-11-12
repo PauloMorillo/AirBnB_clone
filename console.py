@@ -10,7 +10,7 @@ from models.place import Place
 from datetime import datetime
 from models.city import City
 from models.user import User
-import models
+from models import storage
 import cmd
 
 
@@ -20,7 +20,7 @@ def get_objects_by_class(args):
     :param args:
     :return:
     """
-    objects = models.storage.all()
+    objects = storage.all()
     args = args.split()
 
     if len(args) == 0:
@@ -109,7 +109,7 @@ class HBNBCommand(cmd.Cmd):
         if objects and inst_id:
             try:
                 objects.pop(inst_id)
-                models.storage.save()
+                storage.save()
             except Exception as e:
                 print("** no instance found **")
 
@@ -119,7 +119,7 @@ class HBNBCommand(cmd.Cmd):
         :param args:
         :return:
         """
-        objects = models.storage.all()
+        objects = storage.all()
 
         try:
             if args:
