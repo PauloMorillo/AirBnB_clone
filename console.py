@@ -148,7 +148,10 @@ class HBNBCommand(cmd.Cmd):
             if objects and inst_id:
                 args = args.split()
 
-                setattr(objects[inst_id], args[2], args[3].strip('"'))
+                value = args[3].strip('"')
+                value = value.strip("'")
+
+                setattr(objects[inst_id], args[2], value)
                 models.storage.save()
 
 
