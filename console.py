@@ -130,7 +130,7 @@ class HBNBCommand(cmd.Cmd):
 
         listobj = []
         for key in objects:
-            listobj.append(str(objects[key]))
+            listobj = [str(objects[key])] + listobj
         print(listobj)
 
     def do_update(self, args):
