@@ -145,6 +145,12 @@ class HBNBCommand(cmd.Cmd):
         args = args.split()
 
         if objects and inst_id:
+            try:
+                print(objects.inst_id)
+            except Exception as e:
+                print("** no instance found **")
+                return
+
             if len(args) == 2:
                 print("** attribute name missing **")
                 return
