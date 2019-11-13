@@ -128,7 +128,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        print(list(objects.values()))
+        listobj = []
+        for key in objects:
+            listobj.append(str(objects[key]))
+        print(listobj)
 
     def do_update(self, args):
         """
