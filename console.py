@@ -225,6 +225,29 @@ class HBNBCommand(cmd.Cmd):
             self.do_destroy(modelin + " " + metho)
             return
 
+        if "update(" in metho and ")" in metho:
+            metho = metho.strip("update(")
+            metho = metho.strip(")")
+            if metho == "":
+                print("** instance id missing **")
+                return
+            listme = metho.split(", ")
+            try:
+                if not listme[1]:
+                    pass
+            except:
+                print("** attribute name missing **")
+                return
+            try:
+                if not listme[2]:
+                    pass
+            except:
+                print("** value missing **")
+                return
+            self.do_update(modelin + " " + listme[0] + " " + listme[1] + " " +
+                           listme[2])
+            return
+
         print("*** Unknown syntax: {}".format(args))
 
 if __name__ == '__main__':
