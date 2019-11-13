@@ -26,18 +26,20 @@ def get_objects_by_class(args):
     if len(args) == 0:
         print("** class name missing **")
         return None, None
-    elif len(args) == 1:
-        print("** instance id missing **")
-        return None, None
 
     class_name = args[0]
-    inst_id = args[1]
 
     try:
         eval(class_name)
     except NameError:
         print("** class doesn't exist **")
         return None, None
+
+    if len(args) == 1:
+        print("** instance id missing **")
+        return None, None
+
+    inst_id = args[1]
 
     return objects, "{}.{}".format(class_name, inst_id)
 
