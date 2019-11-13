@@ -131,8 +131,16 @@ class HBNBCommand(cmd.Cmd):
             return
 
         listobj = []
-        for key in objects:
-            listobj = [str(objects[key])] + listobj
+
+        if args != "":
+            for key in objects:
+                lik = key.split(".", 1)
+                if lik[0] == args:
+                    listobj = [str(objects[key])] + listobj
+
+        else:
+            for key in objects:
+                listobj = [str(objects[key])] + listobj
         print(listobj)
 
     def do_update(self, args):
@@ -164,6 +172,60 @@ class HBNBCommand(cmd.Cmd):
                     setattr(objects[inst_id], args[2], value)
                     objects[inst_id].save()
 
+    def default(self, args):
+        """Function to get all commands not found"""
+        listargs = args.split(".", 1)
+        # print(listargs)
+        if len(listargs) == 1:
+            print("*** Unknown syntax: {}".format(args))
+            return
+
+        modelin = listargs[0]
+        metho = listargs[1]
+
+        if metho == "all()":
+            self.do_all(modelin)
+            return
+
+        if metho == "count()":
+            objects = storage.all()
+            try:
+                eval(modelin)
+            except Exception as e:
+                print("** class doesn't exist **")
+                return
+            listobj = []
+            counto = 0
+
+            if args != "":
+                for key in objects:
+                    lik = key.split(".", 1)
+                    if lik[0] == modelin:
+                        listobj = [str(objects[key])] + listobj
+                        counto = counto + 1
+            print(counto)
+            return
+
+        if "show(" in metho and ")" in metho:
+            metho = metho.strip("show(")
+            metho = metho.strip(")")
+            # print(metho)
+            if metho == "":
+                print("** instance id missing **")
+                return
+            self.do_show(modelin + " " + metho)
+            return
+
+        if "destroy(" in metho and ")" in metho:
+            metho = metho.strip("destroy(")
+            metho = metho.strip(")")
+            if metho == "":
+                print("** instance id missing **")
+                return
+            self.do_destroy(modelin + " " + metho)
+            return
+
+        print("*** Unknown syntax: {}".format(args))
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
