@@ -244,6 +244,10 @@ class HBNBCommand(cmd.Cmd):
             except:
                 print("** value missing **")
                 return
+            listme[0] = listme[0].strip("'")
+            listme[0] = listme[0].strip('"')
+            listme[1] = listme[1].strip("'")
+            listme[1] = listme[1].strip('"')
             self.do_update(modelin + " " + listme[0] + " " + listme[1] + " " +
                            listme[2])
             return
