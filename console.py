@@ -145,9 +145,7 @@ class HBNBCommand(cmd.Cmd):
         args = args.split()
 
         if objects and inst_id:
-            try:
-                print(objects.inst_id)
-            except Exception as e:
+            if inst_id not in objects:
                 print("** no instance found **")
                 return
 
