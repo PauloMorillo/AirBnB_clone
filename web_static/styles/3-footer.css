@@ -1,10 +1,11 @@
 footer {
-    position:absolute;
-    bottom:0; 
+    position: relative; 
     background: white;
     height: 60px;
     width: 100%;
     border-top: 1px solid #CCCCCC;
+    bottom: 0;
+    margin-top: auto;
 }
 footer p {
     text-align: center; 
